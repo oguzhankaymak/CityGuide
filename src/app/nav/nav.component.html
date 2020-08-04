@@ -1,0 +1,27 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <a class="navbar-brand" href="#">GALERİ</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarColor01">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="city" routerLinkActive="active">Şehirler</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="cityAdd" routerLinkActive ="active" >Şehir Ekle</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Hakkımızda</a>
+      </li> 
+    </ul>
+    <form *ngIf = "!isAuthenticated" (ngSubmit) ="login()" #loginForm = "ngForm" class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" name="username" [(ngModel)] = "loginUser.userName" type="text" placeholder="Kullanıcı Adı" required>
+      <input class="form-control mr-sm-2" name="password" [(ngModel)] = "loginUser.password" type="password" placeholder="Şifre" required>
+      <button class="btn btn-secondary my-2 my-sm-0" [disabled] = "!loginForm.valid" type="submit">Giriş</button> 
+    </form>
+    <button *ngIf = "!isAuthenticated" class="btn btn-info my-2 my-sm-0 ml-2" routerLink="register" >Kayıt</button>
+    <button *ngIf = "isAuthenticated" class="btn btn-secondary my-2 my-sm-0" (click)="logOut()">Çıkış</button> 
+  </div>
+</nav>
